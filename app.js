@@ -11,6 +11,8 @@ app.use(cors());
 // app.use(bodyParser.urlencoded()); // x-www-form-urlencoded <form>
 app.use(express.json()); // application/json
 
+app.get('/', (req, res) => res.send('Main page'));
+
 app.use('/feed', feedRoutes);
 
 app.use('/', (req, res, next) => {

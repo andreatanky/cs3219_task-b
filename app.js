@@ -31,7 +31,10 @@ app.use((error, req, res, next) => {
 
 mongoose.connect('mongodb+srv://Andrea:password<3@cluster0.k1rxn.mongodb.net/task_b1?retryWrites=true&w=majority')
 .then(result => {
-    app.listen(8080);
+    const PORT = process.env.PORT || 8080;
+    app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
 }).catch(err => console.log(err));
 
 module.exports = app;

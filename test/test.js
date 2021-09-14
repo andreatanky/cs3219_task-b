@@ -85,18 +85,17 @@ describe("Post API", function () {
       */
 
     describe("PUT /feed/post/:postId", function() {
-        // before("Finding a post", async function() {
-        //     let post = await Post.findOne({title: 'Post for testing'});
-        //     postId = post._id.toString();
-        // })
+        before("Finding a post", async function() {
+            let post = await Post.findOne({title: 'Post for testing!'});
+            postId = post._id.toString();
+        })
         describe("Edit a post", async function() {
             let result = null;
             before(async function() {
-                result = await app.put(`/feed/post/612a8a4567edec0909b514ea`)
+                result = await app.put(`/feed/post/${postId}`)
                 .send({
                     title: "Edit post for testing",
-                    content: "Edit content for testing",
-                    creator: {name: 'Testing'},
+                    content: "Edit content for testing"
                 })
             });
             it("Should edit the post successfully", function(done) {

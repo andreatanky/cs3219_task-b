@@ -68,6 +68,7 @@ exports.editPost = (req, res, next) => {
     const postId = req.params.postId;
     const title = req.body.title;
     const content = req.body.content;
+    const name = req.body.creator.name;
 
     Post.findById(postId) // mongoose built in function
     .then(post => {
@@ -79,6 +80,7 @@ exports.editPost = (req, res, next) => {
 
         post.title = title;
         post.content = content;
+        post.creator.name = name;
         return post.save();
     })
     .then(result => {

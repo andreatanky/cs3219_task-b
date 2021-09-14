@@ -20,10 +20,11 @@ exports.getPosts = (req, res, next) => {
 exports.postPost = (req, res, next) => {
     const title = req.body.title;
     const content = req.body.content;
+    const name = req.body.creator.name;
     const post = new Post({
         title: title,
         content: content,
-        creator: {name: 'Andrea'},
+        creator: {name: name},
     });
 
     post.save().then(result => {

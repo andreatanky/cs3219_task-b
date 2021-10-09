@@ -1,9 +1,12 @@
 language: node_js
+
 node_js:
   - 14
 cache: npm
 
 install:
+  - npm install -g serverless cors
+  - npm install
   - npm ci
 
 script:
@@ -11,8 +14,10 @@ script:
 
 deploy:
   provider: lambda
-  function_name: travisDeploy
+  function_name: deploy-travis
   region: ap-southeast-1
   role: arn:aws:iam::619359331340:role/service-role/deploy-travis-role-klldjnkd
   runtime: nodejs14.x
   handler_name: handler
+  on:
+    branch: "main"

@@ -5,11 +5,12 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha test/test.js --exit --timeout 20000",
-    "start": "nodemon app.js"
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-serverless-express": "^3.4.0",
     "chai": "^4.3.4",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

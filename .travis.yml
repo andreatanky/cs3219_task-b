@@ -8,3 +8,11 @@ install:
 
 script:
   - npm test
+
+deploy:
+  provider: lambda
+  function_name: travisDeploy
+  region: ap-southeast-1
+  role: arn:aws:iam::619359331340:role/service-role/deploy-travis-role-klldjnkd
+  runtime: nodejs14.x
+  handler_name: handler

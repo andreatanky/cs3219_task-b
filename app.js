@@ -7,10 +7,16 @@ const feedRoutes = require('./routes/feed');
 
 const app = express();
 app.use(cors());
+const pw = process.env.MONGODB_PASSWORD;
 
-app.use(express.json());
+mongoose.connect('mongodb+srv://Andrea:password<3@cluster0.k1rxn.mongodb.net/task_b1?retryWrites=true&w=majority', { 
+    useNewUrlParser: true
+});
 
-app.get('/', (req, res) => res.send('Main page'));
+var db = mongoose.connection;
+
+// app.use(bodyParser.urlencoded()); // x-www-form-urlencoded <form>
+app.use(express.json()); // application/json
 
 app.use('/feed', feedRoutes);
 
@@ -30,12 +36,7 @@ app.use((error, req, res, next) => {
    res.status(status).json({message: "An error occured!"});
 })
 
-mongoose.connect('mongodb+srv://Andrea:password<3@cluster0.k1rxn.mongodb.net/task_b1?retryWrites=true&w=majority')
-.then(result => {
-    const PORT = process.env.PORT || 8080;
-    app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
-});
-}).catch(err => console.log(err));
+
+app.listen(8080);
 
 module.exports = app;

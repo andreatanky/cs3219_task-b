@@ -1,5 +1,3 @@
-// Import Mongoose
-
 const awsServerlessExpress = require("aws-serverless-express");
 let mongoose = require('mongoose');
 

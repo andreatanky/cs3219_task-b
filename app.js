@@ -8,7 +8,7 @@ const feedRoutes = require('./routes/feed');
 const app = express();
 app.use(cors());
 
-app.use(express.json()); // application/json
+app.use(express.json());
 
 app.get('/', (req, res) => res.send('Main page'));
 

@@ -2,16 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 var cors = require("cors");
-require('dotenv').config();
 
 const feedRoutes = require('./routes/feed');
 
 const app = express();
 app.use(cors());
-const pw = process.env.MONGODB_PASSWORD;
 
 // app.use(bodyParser.urlencoded()); // x-www-form-urlencoded <form>
 app.use(express.json()); // application/json
+
+app.get('/', (req, res) => res.send('Main page'));
 
 app.use('/feed', feedRoutes);
 
@@ -33,7 +33,10 @@ app.use((error, req, res, next) => {
 
 mongoose.connect('mongodb+srv://Andrea:password<3@cluster0.k1rxn.mongodb.net/task_b1?retryWrites=true&w=majority')
 .then(result => {
-    app.listen(8080);
+    const PORT = process.env.PORT || 8080;
+    app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
 }).catch(err => console.log(err));
 
 module.exports = app;

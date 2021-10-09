@@ -19,3 +19,5 @@ deploy:
   role: arn:aws:iam::619359331340:role/service-role/deploy-travis-role-klldjnkd
   runtime: nodejs14.x
   handler_name: handler
+  on:
+    all_branches: true

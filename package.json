@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha test/test.js --timeout 20000",
+    "test": "mocha test/test.js --exit --timeout 20000",
     "start": "nodemon app.js"
   },
   "author": "",
